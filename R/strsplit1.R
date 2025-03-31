@@ -1,12 +1,19 @@
-#' Unlist base R splitstring
+#' Split a string
 #'
-#' @param x a string
-#' @param split a character that splits the parts
+#' @param x A character vector with one element.
+#' @param split What to split on.
 #'
-#' @return character vector of its parts
-#'
+#' @return A character vector.
 #' @export
 #'
-strsplit1 <- function(x, split) {
-  strsplit(x, split = split)[[1]]
+#' @examples
+#' x <- "alfa,bravo,charlie,delta"
+#' strsplit1(x, split = ",")
+str_split_one <- function(string, pattern, n = Inf) {
+  stopifnot(is.character(string), length(string) <= 1)
+  if (length(string) == 1) {
+    stringr::str_split(string = string, pattern = pattern, n = n)[[1]]
+  } else {
+    character()
+  }
 }
